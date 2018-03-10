@@ -11,14 +11,14 @@ class Controller_Message extends Controller_Rest
 
   public function get_writeMessage()
   {
-    $data = Input::get();
-    Model_Message::addMessageByTalkRoomId($data['userName'],$data['message'],$data['talkRoomId']);
+    $params = Input::get();
+    Model_Message::addMessageByTalkRoomId($params);
   }
 
   public function get_readMessage()
   {
-    $data = Input::get();
-    $result = Model_Message::getMessageByTalkRoomId($data['talkRoomId']);
+    $params = Input::get();
+    $result = Model_Message::getMessageByTalkRoomId($params['talkRoomId']);
     $this -> response($result);
   }
 }

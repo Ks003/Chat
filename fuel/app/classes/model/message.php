@@ -4,17 +4,17 @@ class Model_Message extends Model
 {
   /**
    * メッセージを格納
-   * @param integer $talkRoomId
+   * @param integer $params
    */
 
-  public static function addMessageByTalkRoomId($userName,$message,$talkRoomId)
+  public static function addMessageByTalkRoomId($params)
   {
     date_default_timezone_set('asia/tokyo');
     $query = DB::insert('message') -> set(array(
-      'user_name' => $userName,
-      'comment' => $message,
+      'user_name' => $params['userName'],
+      'comment' => $params['message'],
       'comment_date' => date('Y-m-d G:i:s'),
-      'talkroom_id' => $talkRoomId,
+      'talkroom_id' => $params['talkRoomId'],
     ));
     return $query -> execute();
   }
